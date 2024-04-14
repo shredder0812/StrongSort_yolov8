@@ -1,0 +1,11 @@
+torch
+numpy
+opencv-python
+time
+ultralytics
+pyyaml
+easydict
+pathlib
+supervision
+strongsort
+yolov5
