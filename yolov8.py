@@ -335,18 +335,15 @@ class ObjectDetection:
                 cv2.putText(frame, label, (label_x + 5, label_y - 5), cv2.FONT_HERSHEY_SIMPLEX, 1.5, (255, 255, 255), 3)
                 detections = self.predict(frame)
                 for dets in detections:
-                    tracks = tracker.update(dets.boxes.data.to("cpu").numpy(), frame)
-                    if len(tracks.shape) == 2 and tracks.shape[1] == 8:
-                        if len(previous_tracks) > 0:
-                            tracks = self.update_track_id(tracks, previous_tracks)
-                        frame = self.draw_tracks(frame, tracks, txt_file)
-                        previous_tracks = tracks
+                    tracks = tracker.update(dets.boxes.data.to("cpu"), frame)
+                    #if len(tracks.shape) == 2 and tracks.shape[1] == 8:
+                    if len(previous_tracks) > 0:
+                        tracks = self.update_track_id(tracks, previous_tracks)
+                    frame = self.draw_tracks(frame, tracks, txt_file)
+                    previous_tracks = tracks
                 self.display_labels(frame, tracks)
                 self.draw_saved_images(frame)
                 end_time = perf_counter()
-                # fps = 1 / np.round(end_time - start_time, 2)
-                # cv2.rectangle(frame, (0, 30), (220, 80), (255, 255, 255), -1)
-                # cv2.putText(frame, f'FPS: {int(fps)}', (20, 70), self.font, 1.5, (0, 255, 0), 5)
                 self.writer.write(frame)
                 cv2.imshow('frame', frame)
                 if cv2.waitKey(5) & 0xFF == 27:

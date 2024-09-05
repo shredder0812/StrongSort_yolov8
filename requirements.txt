@@ -1,7 +1,6 @@
-torch
+torch>=1.7.0
 numpy
 opencv-python
-time
 ultralytics
 pyyaml
 easydict
