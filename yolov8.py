@@ -335,7 +335,7 @@ class ObjectDetection:
                 cv2.putText(frame, label, (label_x + 5, label_y - 5), cv2.FONT_HERSHEY_SIMPLEX, 1.5, (255, 255, 255), 3)
                 detections = self.predict(frame)
                 for dets in detections:
-                    tracks = tracker.update(dets.boxes.data.to("cpu"), frame)
+                    tracks = tracker.update(dets, frame)
                     #if len(tracks.shape) == 2 and tracks.shape[1] == 8:
                     if len(previous_tracks) > 0:
                         tracks = self.update_track_id(tracks, previous_tracks)
