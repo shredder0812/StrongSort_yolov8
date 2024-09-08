@@ -2,8 +2,7 @@ torch==2.1.0
 torchvision==0.16
 numpy
 opencv-python
-ultralytics==8.0.90
-pyyaml
+ultralytics==8.1.20
 easydict
 pathlib
 supervision
