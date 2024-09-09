@@ -19,7 +19,7 @@ SAVE_VIDEO = True
 TRACKER = "strongsort"
 
 
-test_vid = "230411BVK107 - Trim.mp4"
+test_vid = "230411BVK107Trim.mp4"
 model_weights = "5-class-model.pt"
 
 model_name_dict = {
